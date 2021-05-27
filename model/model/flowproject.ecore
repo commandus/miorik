@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="flowproject" nsURI="http://flowproject/1.0" nsPrefix="flowproject">
+  <eClassifiers xsi:type="ecore:EClass" name="Task"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Project">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="build" upperBound="-1"
+        eType="#//Building"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resulute" eType="#//ProjectDocumentSet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="invest" upperBound="-1"
+        eType="#//Investment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Building">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="project_id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onLand" upperBound="-1"
+        eType="#//LandSet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasDocument" upperBound="-1"
+        eType="#//BuildingDocumentSet"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Land">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="LandhasDoc" upperBound="-1"
+        eType="#//LandDocumentSet"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LandSet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="building_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="landpurspose_id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="purpose" lowerBound="1"
+        eType="#//LandPurpose"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="land_id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="describe" lowerBound="1"
+        eType="#//Land"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LandPurpose">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Document">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BuildingDocumentSet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="doc_describe" eType="#//Document"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="building_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="document_id"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LandDocumentSet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="land_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="document_id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="describeLand" lowerBound="1"
+        eType="#//Document"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectDocumentSet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="describe" lowerBound="1"
+        eType="#//Document"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="project_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="document_id"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Share">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="owner_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="building_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shares" upperBound="-1"
+        eType="#//Building"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="own" lowerBound="1" eType="#//Owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Owner">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Investment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="project_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="investor_id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inv_desc" lowerBound="1"
+        eType="#//Inverstor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Inverstor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="insurance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="doInsure" upperBound="-1"
+        eType="#//Building"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="building_id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="year"/>
+  </eClassifiers>
+</ecore:EPackage>
